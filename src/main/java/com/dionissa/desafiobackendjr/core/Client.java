@@ -44,9 +44,4 @@ public class Client {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private Date updatedAt;
-
-    public Object getDataNascimento() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDataNascimento'");
-    }
 }

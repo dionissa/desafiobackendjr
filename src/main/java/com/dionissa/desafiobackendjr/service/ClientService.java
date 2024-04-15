@@ -52,11 +52,11 @@ public class ClientService {
         return null;
     }
 
-    public void createClientWithExistingCar(String nome, String cpf, Long carId, Date dataNascimento) {
+    public void createClientWithExistingCar(String name, String cpf, Long carId, Date dataNascimento) {
         Car car = carRepository.findById(carId).orElseThrow(() -> new RuntimeException("Car not found"));
 
         Client client = new Client();
-        client.setName(nome);
+        client.setName(name);
         client.setCpf(cpf);
         client.setCar(car);
         client.setBirthDate(dataNascimento);
