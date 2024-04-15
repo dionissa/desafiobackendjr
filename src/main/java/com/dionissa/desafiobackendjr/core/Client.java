@@ -24,18 +24,18 @@ public class Client {
     private Long id;
 
     @Column(length = 50)
-    private String nome;
+    private String name;
 
     @Column(unique = true)
     private String cpf;
 
     @OneToOne
     @JoinColumn(name = "carro_id")
-    private Car carro;
+    private Car car;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "data_nascimento")
-    private Date dataNascimento;
+    private Date birthDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
@@ -44,4 +44,9 @@ public class Client {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
     private Date updatedAt;
+
+    public Object getDataNascimento() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDataNascimento'");
+    }
 }

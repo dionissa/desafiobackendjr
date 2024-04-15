@@ -41,10 +41,10 @@ public class ClientService {
         Optional<Client> optionalClient = clientRepository.findById(id);
         if (optionalClient.isPresent()) {
             Client client = optionalClient.get();
-            client.setNome(updatedClient.getNome());
+            client.setName(updatedClient.getName());
             client.setCpf(updatedClient.getCpf());
-            client.setCarro(updatedClient.getCarro());
-            client.setDataNascimento(updatedClient.getDataNascimento());
+            client.setCar(updatedClient.getCar());
+            client.setBirthDate(updatedClient.getBirthDate());
             client.setCreatedAt(updatedClient.getCreatedAt());
             client.setUpdatedAt(updatedClient.getUpdatedAt());
             return clientRepository.save(client);
@@ -56,10 +56,10 @@ public class ClientService {
         Car car = carRepository.findById(carId).orElseThrow(() -> new RuntimeException("Car not found"));
 
         Client client = new Client();
-        client.setNome(nome);
+        client.setName(nome);
         client.setCpf(cpf);
-        client.setCarro(car);
-        client.setDataNascimento(dataNascimento);
+        client.setCar(car);
+        client.setBirthDate(dataNascimento);
         client.setCreatedAt(new Date());
         client.setUpdatedAt(new Date());
 
