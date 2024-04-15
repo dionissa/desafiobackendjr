@@ -12,7 +12,7 @@ import com.dionissa.desafiobackendjr.core.Client;
 import com.dionissa.desafiobackendjr.service.ClientService;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/api/clients")
 public class ClientController {
 
     @Autowired
