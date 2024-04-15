@@ -65,4 +65,18 @@ public class ClientService {
 
         clientRepository.save(client);
     }
+
+    public Client addCarToClient(Long clientId, Long carId) {
+        Optional<Client> optionalClient = clientRepository.findById(clientId);
+        if (optionalClient.isPresent()) {
+            Car car = carRepository.findById(carId).orElseThrow(() -> new RuntimeException("Car not found"));
+
+            Client client = optionalClient.get();
+            client.setCar(car);
+
+            return clientRepository.save(client);
+        }
+
+        return null;
+    }
 }

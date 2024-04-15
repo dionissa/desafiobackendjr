@@ -16,13 +16,13 @@ To get started with this application, follow these steps:
 To create a client using JSON data, you can send a POST request to the server with the client information in the request body. Here's an example of JSON data for creating a client:
 
 ```json
+// the default address using a local database is: http://localhost:8080/clients
+
 {
   "name": "John Doe",
   "cpf": "12345678920",
-  "car": "",
-  "birthDate": "",
-  "createdAt": "",
-  "updatedAt": ""
+  // You can leave the car argument blank, and add a car later for this client
+  "birthDate": "1990-12-12"
 }
 ```
 
@@ -31,42 +31,34 @@ To create a client using JSON data, you can send a POST request to the server wi
 To create a car associated with a client, you can send a POST request with the car information and the client's ID in the request body. Here's an example of JSON data for creating a car:
 
 ```json
+// the default address using a local database is: http://localhost:8080/cars
 {
   "model": "Kombi",
-  "brand": "Ford",
-  "createdDate": "2024-04-15T10:00:00"
+  "brand": "Ford"
 }
 ```
 
-## Deleting a Car
+## Deleting a Car (DELETE Method)
 
-To delete a car, follow these steps:
-
-1. Open the `CarController` class.
-2. Call the `deleteCar` method in the `CarController` class and pass the `Car` instance as a parameter.
-
-Here's an example Java code:
-
-```java
-Car carToDelete = // get the Car instance to delete
-CarController.deleteCar(carToDelete);
-```
-
-In this JSON data, clientId refers to the ID of the client to whom the car belongs. You would use the POST method to send this JSON data to the server endpoint responsible for creating cars.
-
-## Deleting a Client
-
-To delete a client, follow these steps:
-
-1. Open the `ClientController` class.
-2. Call the `deleteClient` method in the `ClientController` class and pass the `Client` instance as a parameter.
-
-Deleting a Car (DELETE Method)
-To delete a car, you would send a DELETE request to the server with the car's ID as a parameter. Here's an example of how you would send a DELETE request to delete a car:
+To delete a car that is not associated with a client, you can send a DELETE request with the car information in the adress directly.
 
 ```json
-DELETE /clients/1
+  http://localhost:8080/cars/{carID}
 ```
 
-In this example, 1 is the ID of the client you want to delete.
-By implementing these endpoints in your Java application and handling the corresponding HTTP methods (POST, DELETE), you can achieve the functionality of creating and deleting clients and cars using JSON data.
+## Deleting a Client (DELETE Method)
+
+To delete a client that is not associated with a car, you can send a DELETE request with the client information in the request body. Here's an example of JSON data for deleting a client:
+
+```json
+  http://localhost:8080/clients/{clientID}
+```
+
+## Adding a existing car to an existing client (PATCH Method)
+
+To add or update a existing car to an existing user, simple use the PATCH method with the followings arguments in the adress:
+
+```json
+// The client id that you want to add the car and the car ID of the car that you want to add to the client
+  http://localhost:8080/clients/{clientID}/cars/{carID}
+```

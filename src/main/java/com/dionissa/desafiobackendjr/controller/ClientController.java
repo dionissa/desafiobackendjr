@@ -46,4 +46,12 @@ public class ClientController {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{clientId}/cars/{carId}")
+    public ResponseEntity<Client> addCarToClient(
+            @PathVariable Long clientId,
+            @PathVariable Long carId) {
+        Client updatedClient = clientService.addCarToClient(clientId, carId);
+        return updatedClient != null ? ResponseEntity.ok(updatedClient) : ResponseEntity.notFound().build();
+    }
 }
